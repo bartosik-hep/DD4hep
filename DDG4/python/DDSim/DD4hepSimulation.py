@@ -636,11 +636,12 @@ class DD4hepSimulation(object):
     :param detectors: list of detectors
     :param setupFunction: function used to register the sensitive detector
     :param defaultFilter: default filter to apply for given types
+    :param defaultAction: default action to apply for given types
     :param abortForMissingAction: if true end program if there is no action found
     """
     for det in detectors:
       logger.info('Setting up SD for %s with %s', det, defaultAction)
-      action = None
+      action = defaultAction
       for pattern in self.action.mapActions:
         if pattern.lower() in det.lower():
           action = self.action.mapActions[pattern]
